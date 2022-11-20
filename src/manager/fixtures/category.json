@@ -1,0 +1,79 @@
+[
+  {
+    "model": "manager.category",
+    "pk": 1,
+    "fields": {
+      "name": "Selfcare"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 2,
+    "fields": {
+      "name": "Salary"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 3,
+    "fields": {
+      "name": "Health and fitness"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 4,
+    "fields": {
+      "name": "Cafe and restaraunts"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 5,
+    "fields": {
+      "name": "Car"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 6,
+    "fields": {
+      "name": "Education"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 7,
+    "fields": {
+      "name": "Rest and entertainment"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 8,
+    "fields": {
+      "name": "Payments, commissions"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 9,
+    "fields": {
+      "name": "Buy: dress, tecnhique"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 10,
+    "fields": {
+      "name": "Food"
+    }
+  },
+  {
+    "model": "manager.category",
+    "pk": 11,
+    "fields": {
+      "name": "Driveway"
+    }
+  }
+]
