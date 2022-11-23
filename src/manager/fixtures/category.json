@@ -3,77 +3,88 @@
     "model": "manager.category",
     "pk": 1,
     "fields": {
-      "name": "Selfcare"
+      "name": "Selfcare",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 2,
     "fields": {
-      "name": "Salary"
+      "name": "Salary",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 3,
     "fields": {
-      "name": "Health and fitness"
+      "name": "Health and fitness",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 4,
     "fields": {
-      "name": "Cafe and restaraunts"
+      "name": "Cafe and restaraunts",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 5,
     "fields": {
-      "name": "Car"
+      "name": "Car",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 6,
     "fields": {
-      "name": "Education"
+      "name": "Education",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 7,
     "fields": {
-      "name": "Rest and entertainment"
+      "name": "Rest and entertainment",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 8,
     "fields": {
-      "name": "Payments, commissions"
+      "name": "Payments, commissions",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 9,
     "fields": {
-      "name": "Buy: dress, tecnhique"
+      "name": "Buy: dress, tecnhique",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 10,
     "fields": {
-      "name": "Food"
+      "name": "Food",
+      "added_by" : "1"
     }
   },
   {
     "model": "manager.category",
     "pk": 11,
     "fields": {
-      "name": "Driveway"
+      "name": "Driveway",
+      "added_by" : "1"
     }
   }
 ]

@@ -22,17 +22,5 @@
       "is_superuser": "False",
       "is_active": "True"
     }
-  },
-  {
-    "model": "auth.user",
-    "pk": 3,
-    "fields": {
-      "username": "testuser1",
-      "password": "pbkdf2_sha256$390000$V1ZMho1U9goWFTVg7tApc2$j+DFhwM714kuSNwRdOHuW1MRlhE7rJvPIIqKXqQ2gvc=",
-      "email": "testuser1@admin.by",
-      "is_staff": "False",
-      "is_superuser": "False",
-      "is_active": "True"
-    }
   }
 ]

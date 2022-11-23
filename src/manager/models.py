@@ -4,23 +4,21 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
+    added_by = models.ForeignKey(User,on_delete=models.CASCADE,related_name="category_add_user")
 
     def __str__(self):
         return f"Category '{self.name}'"
 
 
 class Account(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="account_user")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="account_user",unique=True)
     balance = models.DecimalField(max_digits=10,decimal_places=2)
     category = models.ManyToManyField(Category, related_name="account_category")
 
     def __str__(self):
-        return f"{self.user}'s account"
+        return f"{self.user}"
 
-#TODO creation user-> auto create=ion of account and make balance
-#TODO adter transact change balance auto
-#TODO add new categories through account model
-# TODO add to category model field user ( to filter categories for each one)
+
 class Transaction(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="transaction_account")
     sum = models.DecimalField(max_digits=10,decimal_places=2)
