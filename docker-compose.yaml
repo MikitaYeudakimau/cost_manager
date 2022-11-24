@@ -30,5 +30,33 @@ services:
     ports:
       - "5432:5432"
 
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: always
+
+  celery:
+    container_name: celery
+    restart: always
+    build: ./
+    command: celery --workdir=./src -A src worker
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - redis
+      - web_cost_manager
+      - db_cost_manager
+
+  celery-beat:
+    container_name: celery-beat
+    build: ./
+    command: celery --workdir=./src -A src beat -l info
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - redis
+      - web_cost_manager
+      - db_cost_manager
+
 volumes:
   postgres_data:

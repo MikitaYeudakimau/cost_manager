@@ -134,4 +134,18 @@ DJOSER = {
     }
 }
 
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'djangoprojectdrf@yandex.by'
+EMAIL_HOST_PASSWORD = "bchuftdgkmpqntgd"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
 
