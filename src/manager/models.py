@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+#TODO: description in transact model can be blank
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
     added_by = models.ForeignKey(User,on_delete=models.CASCADE,related_name="category_add_user")
@@ -16,7 +16,7 @@ class Account(models.Model):
     category = models.ManyToManyField(Category, related_name="account_category")
 
     def __str__(self):
-        return f"{self.user}"
+        return f"Account {self.user}"
 
 
 class Transaction(models.Model):

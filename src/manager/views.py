@@ -1,9 +1,11 @@
+from decimal import Decimal
 from django.db.models import Q
 from rest_framework import viewsets, status, mixins, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from djoser.views import UserViewSet
 from manager import models, serializers
+from manager.signals import signals
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -63,8 +65,18 @@ class TransactionViewSet(mixins.ListModelMixin,
         else:
             return models.Transaction.objects.filter(account__user=self.request.user)
 
+    def perform_create(self, serializer):
+        serializer.save(account=models.Account.objects.get(user=self.request.user))
+        account_name = self.request.user.username
+        amount = Decimal(serializer.data['sum'])
+        signals.balance_change.send(sender=self.__class__,account_name=account_name,amount=amount)
+
     def create(self, request, *args, **kwargs):
-        try:
-            super().create(request, *args, **kwargs)
-        except:
-            return Response('Please, make sure, that your account is registered', status=status.HTTP_404_NOT_FOUND)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        account = self.request.user
+        if models.Account.objects.filter(user__username=account).exists() is False:
+            return Response("Please, make sure your account is active", status=status.HTTP_400_BAD_REQUEST)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
