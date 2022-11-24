@@ -1,11 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-#TODO: description in transact model can be blank
+#TODO: celery statistics every morning at email
+#TODO: add docker
 class Category(models.Model):
-    name = models.CharField(max_length=30, unique=True)
+    name = models.CharField(max_length=30)
     added_by = models.ForeignKey(User,on_delete=models.CASCADE,related_name="category_add_user")
 
+    class Meta:
+        unique_together = ['name','added_by']
     def __str__(self):
         return f"Category '{self.name}'"
 
@@ -25,4 +28,7 @@ class Transaction(models.Model):
     time = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="transaction_category")
     organization = models.CharField(max_length=45)
-    description = models.TextField()
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"Transaction on sum {self.sum} rubles, {self.time.strftime('%d-%m-%Y %H:%m')}"

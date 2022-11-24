@@ -28,10 +28,11 @@ class AccountSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
     balance = serializers.StringRelatedField()
     category = AccountCategoryField(many=True)
+    transaction_account = serializers.StringRelatedField(many=True,read_only=True)
 
     class Meta:
         model = models.Account
-        fields = ['id', 'user', 'balance', 'category']
+        fields = ['id', 'user', 'balance', 'category','transaction_account']
 
 
 class TransactionCategoryField(serializers.PrimaryKeyRelatedField):
