@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 #TODO: celery statistics every morning at email
-#TODO: add docker
 class Category(models.Model):
     name = models.CharField(max_length=30)
     added_by = models.ForeignKey(User,on_delete=models.CASCADE,related_name="category_add_user")
