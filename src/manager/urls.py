@@ -1,12 +1,10 @@
-from django.urls import path
+from manager import views
 from rest_framework.routers import DefaultRouter
 
-from manager import views
-
 router = DefaultRouter()
-router.register('category',views.CategoryViewSet,basename="category")
-router.register('account',views.AccountViewSet,basename="account")
-router.register('transaction',views.TransactionViewSet,basename="transaction")
+router.register('category', views.CategoryViewSet, basename="category")
+router.register('account', views.AccountViewSet, basename="account")
+router.register('transaction', views.TransactionViewSet, basename="transaction")
 urlpatterns = [
 
 ]

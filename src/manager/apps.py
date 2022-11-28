@@ -7,4 +7,3 @@ class ManagerConfig(AppConfig):
 
     def ready(self):
         import manager.signals.handlers
-

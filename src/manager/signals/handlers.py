@@ -1,12 +1,12 @@
-from django.db.models.signals import post_save
 from django.dispatch import receiver
 from djoser.signals import user_registered
 from manager import models
+
 from .signals import balance_change
 
 
 @receiver(user_registered)
-def auto_create_account(sender, user, request,**kwargs):
+def auto_create_account(sender, user, request, **kwargs):
     """
     For adding only through djoser
     """
@@ -27,11 +27,11 @@ def auto_create_account(sender, user, request,**kwargs):
 
 
 @receiver(balance_change)
-def balance_changing(sender, account_name,amount,**kwargs):
+def balance_changing(sender, account_name, amount, **kwargs):
     """
     For changing account's balance after transaction's completion
     """
     # print(data)
     obj = models.Account.objects.get(user__username=account_name)
-    obj.balance -=amount
+    obj.balance -= amount
     obj.save()

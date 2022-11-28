@@ -1,7 +1,6 @@
 from django.db.models import Q
-from rest_framework import serializers
-
 from manager import models
+from rest_framework import serializers
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -28,11 +27,11 @@ class AccountSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
     balance = serializers.StringRelatedField()
     category = AccountCategoryField(many=True)
-    transaction_account = serializers.StringRelatedField(many=True,read_only=True)
+    transaction_account = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = models.Account
-        fields = ['id', 'user', 'balance', 'category','transaction_account']
+        fields = ['id', 'user', 'balance', 'category', 'transaction_account']
 
 
 class TransactionCategoryField(serializers.PrimaryKeyRelatedField):

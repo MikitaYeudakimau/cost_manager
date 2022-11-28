@@ -1,12 +1,10 @@
 from decimal import Decimal
 
 from django.db.models import Q
-
-from rest_framework import viewsets, status, mixins, filters
-from rest_framework.response import Response
-
 from manager import models, serializers
 from manager.signals import signals
+from rest_framework import filters, mixins, status, viewsets
+from rest_framework.response import Response
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
