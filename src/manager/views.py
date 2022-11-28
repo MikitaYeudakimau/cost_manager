@@ -1,9 +1,10 @@
 from decimal import Decimal
+
 from django.db.models import Q
-from rest_framework import viewsets, status, mixins, permissions
-from rest_framework.decorators import action
+
+from rest_framework import viewsets, status, mixins, filters
 from rest_framework.response import Response
-from djoser.views import UserViewSet
+
 from manager import models, serializers
 from manager.signals import signals
 
@@ -58,6 +59,8 @@ class TransactionViewSet(mixins.ListModelMixin,
                          mixins.RetrieveModelMixin,
                          viewsets.GenericViewSet):
     serializer_class = serializers.TransactionSerializer
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['sum', 'date']
 
     def get_queryset(self):
         if self.request.user.is_staff is True:
@@ -69,7 +72,7 @@ class TransactionViewSet(mixins.ListModelMixin,
         serializer.save(account=models.Account.objects.get(user=self.request.user))
         account_name = self.request.user.username
         amount = Decimal(serializer.data['sum'])
-        signals.balance_change.send(sender=self.__class__,account_name=account_name,amount=amount)
+        signals.balance_change.send(sender=self.__class__, account_name=account_name, amount=amount)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

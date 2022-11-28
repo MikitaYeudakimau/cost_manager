@@ -9,10 +9,9 @@ app = Celery("src")
 app.config_from_object("django.conf:settings", namespace="CELERY")
 app.autodiscover_tasks()
 
-
 app.conf.beat_schedule = {
-    'every': {
-        'task': 'src.tasks.repeat_order_make',
-        'schedule': crontab(),
+    'send_email_every_morning_9_am': {
+        'task': 'manager.tasks.send_email_report',
+        'schedule': crontab(hour=9),
     },
 }
